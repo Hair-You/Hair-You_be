@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    @Column(nullable = false, length = 30) // column의 조건
+    @Column(nullable = true, length = 30) // column의 조건
     private String ID;
 
     @Column(nullable = false, length = 100)
