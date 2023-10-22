@@ -1,10 +1,7 @@
 package Hairyou.demo.signup.repository.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Data  //getter setter 생성자
@@ -18,7 +15,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    @Column(nullable = false, length = 30) // column의 조건
+    @Column(nullable = true, length = 30) // column의 조건
     private String ID;
 
     @Column(nullable = false, length = 100)
