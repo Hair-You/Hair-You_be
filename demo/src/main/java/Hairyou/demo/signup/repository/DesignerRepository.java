@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 @Repository
 public interface DesignerRepository extends JpaRepository<Designer,Long> {
-    Optional<Designer> findByNickname(String designer_name);
+    Designer findByID(String ID);
 }
