@@ -1,7 +1,7 @@
 package Hairyou.demo.signup.service;
 
-import Hairyou.demo.signup.repository.DesignerRepository;
-import Hairyou.demo.signup.repository.UserRepository;
+import Hairyou.demo.login.repository.DesignerRepository;
+import Hairyou.demo.login.repository.UserRepository;
 import Hairyou.demo.signup.repository.entity.Designer;
 import Hairyou.demo.signup.repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
