@@ -1,6 +1,7 @@
-package Hairyou.demo.login.repository;
+package Hairyou.demo.designer.repository.entity;
 
-import Hairyou.demo.signup.repository.entity.Designer;
+import Hairyou.demo.designer.repository.dto.DesignerDto;
+import Hairyou.demo.designer.repository.entity.Designer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
