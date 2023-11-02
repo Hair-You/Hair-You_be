@@ -2,8 +2,6 @@ package Hairyou.demo.designer.controller;
 
 import Hairyou.demo.designer.repository.dto.DesignerDto;
 import Hairyou.demo.designer.repository.entity.Designer;
-import Hairyou.demo.designer.service.Designer_LoginService;
-import Hairyou.demo.designer.service.Designer_SignupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("api/auth/designer")
 public class DesignerAuthController {
-    private final Designer_LoginService designerLoginService;
-    private final Designer_SignupService designerSignupService;
+    private final Hairyou.demo.designer.service.designerLoginService designerLoginService;
+    private final Hairyou.demo.designer.service.designerSignupService designerSignupService;
     @PostMapping("/signup")
     public ResponseEntity registerDesigner(@RequestBody DesignerDto designerDto) {
         if(designerSignupService.registerDesigner(designerDto).equals("Success")){

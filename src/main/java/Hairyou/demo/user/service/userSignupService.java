@@ -4,12 +4,11 @@ import Hairyou.demo.user.repository.entity.User;
 import Hairyou.demo.user.repository.entity.UserRepository;
 import Hairyou.demo.user.repository.dto.UserDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class User_SignupService {
+public class userSignupService {
 
     private final UserRepository userRepository;
 

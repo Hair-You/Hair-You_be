@@ -2,8 +2,7 @@ package Hairyou.demo.user.controller;
 
 import Hairyou.demo.user.repository.dto.UserDto;
 import Hairyou.demo.user.repository.entity.User;
-import Hairyou.demo.user.service.User_LoginService;
-import Hairyou.demo.user.service.User_SignupService;
+import Hairyou.demo.user.service.userLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth/user")
 public class UserAuthController {
-    private final User_SignupService userSignupService;
-    private final User_LoginService loginService;
+    private final Hairyou.demo.user.service.userSignupService userSignupService;
+    private final userLoginService loginService;
     @PostMapping("/signup")
     public ResponseEntity registerUser(@RequestBody UserDto userDto) {
         if(userSignupService.registerUser(userDto).equals("Success")){
