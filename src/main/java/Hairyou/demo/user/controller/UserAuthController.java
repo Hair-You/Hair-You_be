@@ -1,23 +1,28 @@
 package Hairyou.demo.user.controller;
 
+import Hairyou.demo.user.repository.dto.UserDto;
 import Hairyou.demo.user.repository.entity.User;
 import Hairyou.demo.user.service.User_LoginService;
+import Hairyou.demo.user.service.User_SignupService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/login")
-public class User_LoginController {
-
+@RequestMapping("/api/auth/user")
+public class UserAuthController {
+    private final User_SignupService userSignupService;
     private final User_LoginService loginService;
-    @PostMapping("/user")
+    @PostMapping("/signup")
+    public ResponseEntity registerUser(@RequestBody UserDto userDto) {
+        if(userSignupService.registerUser(userDto).equals("Success")){
+            return new ResponseEntity(HttpStatus.CREATED);
+        };
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+    @PostMapping("/login")
     public ResponseEntity<String> user_login(@RequestParam String id , @RequestParam String password){
         User user=loginService.login_user(id, password);
         if (user != null) {
@@ -26,5 +31,4 @@ public class User_LoginController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
         }
     }
-
 }

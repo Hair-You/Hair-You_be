@@ -1,23 +1,28 @@
 package Hairyou.demo.designer.controller;
 
+import Hairyou.demo.designer.repository.dto.DesignerDto;
 import Hairyou.demo.designer.repository.entity.Designer;
 import Hairyou.demo.designer.service.Designer_LoginService;
+import Hairyou.demo.designer.service.Designer_SignupService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/login")
-public class Designer_LoginController {
-
+@RequestMapping("api/auth/designer")
+public class DesignerAuthController {
     private final Designer_LoginService designerLoginService;
-    @PostMapping("/designer")
+    private final Designer_SignupService designerSignupService;
+    @PostMapping("/signup")
+    public ResponseEntity registerDesigner(@RequestBody DesignerDto designerDto) {
+        if(designerSignupService.registerDesigner(designerDto).equals("Success")){
+            return new ResponseEntity(HttpStatus.CREATED);
+        }
+        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+    @PostMapping("/login")
     public ResponseEntity<String> designer_login(@RequestParam String id , @RequestParam String password){
         Designer designer=designerLoginService.login_designer(id, password);
         if (designer != null) {
