@@ -29,7 +29,7 @@ public class User {
     @Column(name="gender",nullable = false, length = 10)
     private Gender gender;
 
-    @Column(name = "number",nullable = false, length = 30)
+    @Column(name = "mobile_number",nullable = false, length = 30)
     private String number;
 
 }
