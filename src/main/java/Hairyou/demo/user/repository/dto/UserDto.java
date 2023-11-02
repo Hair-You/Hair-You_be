@@ -1,5 +1,6 @@
 package Hairyou.demo.user.repository.dto;
 
+import Hairyou.demo.user.repository.entity.Gender;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.Getter;
@@ -14,6 +15,6 @@ public class UserDto {
     private String ID;
     private String password;
     private String username;
-    private String gender;
+    private Gender gender;
     private String number;
 }

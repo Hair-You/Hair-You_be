@@ -25,8 +25,9 @@ public class User {
     @Column(name = "user_name",nullable = false, length = 30)
     private String userName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name="gender",nullable = false, length = 10)
-    private String gender;
+    private Gender gender;
 
     @Column(name = "number",nullable = false, length = 30)
     private String number;

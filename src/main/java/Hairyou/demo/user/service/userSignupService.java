@@ -1,5 +1,6 @@
 package Hairyou.demo.user.service;
 
+import Hairyou.demo.user.repository.entity.Gender;
 import Hairyou.demo.user.repository.entity.User;
 import Hairyou.demo.user.repository.entity.UserRepository;
 import Hairyou.demo.user.repository.dto.UserDto;
