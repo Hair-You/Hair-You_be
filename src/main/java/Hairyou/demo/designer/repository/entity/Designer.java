@@ -14,8 +14,8 @@ public class Designer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    @Column(name = "ID",nullable = false, length = 30) // column의 조건
-    private String ID;
+    @Column(name = "id",nullable = false, length = 30) // column의 조건
+    private String id;
 
     @Column(name = "password",nullable = false, length = 100)
     private String password;
@@ -23,8 +23,8 @@ public class Designer {
     @Column(name = "designer_name",nullable = false, length = 30)
     private String designerName;
 
-    @Column(name = "nick_name",nullable = false, length = 100)
-    private String nickName;
+    @Column(name = "nickname",nullable = false, length = 100)
+    private String nickname;
 
     @Column(name = "career",nullable = false, length = 30)
     private String career;

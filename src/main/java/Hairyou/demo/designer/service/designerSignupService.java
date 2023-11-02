@@ -14,7 +14,7 @@ public class designerSignupService {
 
     public String registerDesigner(DesignerDto designer) {
         // Implement validation or other business logic if needed
-        designerRepository.save(Designer.builder().ID(designer.getID()).password(designer.getPassword()).nickName(designer.getNickName()).career(designer.getCareer()).manager(designer.getManager()).designerName(designer.getDesignerName()).build());
+        designerRepository.save(Designer.builder().id(designer.getID()).password(designer.getPassword()).nickname(designer.getNickname()).career(designer.getCareer()).manager(designer.getManager()).designerName(designer.getDesignerName()).build());
         return "Success";
 
     }

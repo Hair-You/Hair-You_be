@@ -11,7 +11,7 @@ public class designerLoginService {
 
     private final DesignerRepository designerRepository;
     public Designer login_designer(String id, String password) {
-        Designer designer = designerRepository.findByID(id);
+        Designer designer = designerRepository.findByid(id);
         if (designer != null && designer.getPassword().equals(password)) {
             return designer;
         }

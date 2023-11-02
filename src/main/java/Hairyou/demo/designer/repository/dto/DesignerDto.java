@@ -14,7 +14,7 @@ public class DesignerDto {
     private String ID;
     private String password;
     private String designerName;
-    private String nickName;
+    private String nickname;
     private String career;
     private String manager;
 }

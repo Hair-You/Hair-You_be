@@ -16,8 +16,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 
-    @Column(name = "ID", length = 30) // column의 조건
-    private String ID;
+    @Column(name = "id", length = 30) // column의 조건
+    private String id;
 
     @Column(name = "password",nullable = false, length = 100)
     private String password;

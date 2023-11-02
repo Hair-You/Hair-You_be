@@ -15,7 +15,7 @@ public class userSignupService {
 
     public String registerUser(UserDto userDto){
         // Implement validation or other business logic if needed
-        userRepository.save(User.builder().ID(userDto.getID()).userName(userDto.getUsername()).password(userDto.getPassword()).gender(userDto.getGender()).number(userDto.getNumber()).build());
+        userRepository.save(User.builder().id(userDto.getID()).userName(userDto.getUsername()).password(userDto.getPassword()).gender(userDto.getGender()).number(userDto.getNumber()).build());
         return "Success";
     }
 
