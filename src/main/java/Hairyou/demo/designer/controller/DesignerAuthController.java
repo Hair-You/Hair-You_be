@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/auth/designer")
+@RequestMapping("/api/auth/designer")
 public class DesignerAuthController {
     private final Hairyou.demo.designer.service.designerLoginService designerLoginService;
     private final Hairyou.demo.designer.service.designerSignupService designerSignupService;
-    @PostMapping("/signup")
+    @PostMapping("/sign-up")
     public ResponseEntity registerDesigner(@RequestBody DesignerDto designerDto) {
         if(designerSignupService.registerDesigner(designerDto).equals("Success")){
             return new ResponseEntity(HttpStatus.CREATED);

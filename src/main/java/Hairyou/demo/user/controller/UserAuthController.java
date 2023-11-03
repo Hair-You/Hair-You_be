@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserAuthController {
     private final Hairyou.demo.user.service.userSignupService userSignupService;
     private final userLoginService loginService;
-    @PostMapping("/signup")
+    @PostMapping("/sign-up")
     public ResponseEntity registerUser(@RequestBody UserDto userDto) {
         if(userSignupService.registerUser(userDto).equals("Success")){
             return new ResponseEntity(HttpStatus.CREATED);
