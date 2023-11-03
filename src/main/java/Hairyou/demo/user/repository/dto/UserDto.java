@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 public class UserDto {
-    private String ID;
+    private String id;
     private String password;
     private String username;
     private Gender gender;
@@ -21,7 +21,7 @@ public class UserDto {
 
     public User toEntity(){
         return User.builder()
-                .id(ID)
+                .id(id)
                 .password(password)
                 .userName(username)
                 .gender(gender)

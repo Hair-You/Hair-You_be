@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @NoArgsConstructor
 public class DesignerDto {
-    private String ID;
+    private String id;
     private String password;
     private String designerName;
     private String nickname;
@@ -21,7 +21,7 @@ public class DesignerDto {
     private String manager;
     public Designer toEntity(){
         return Designer.builder()
-                .id(ID)
+                .id(id)
                 .password(password)
                 .designerName(designerName)
                 .nickname(nickname)
