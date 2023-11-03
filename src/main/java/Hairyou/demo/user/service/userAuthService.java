@@ -19,7 +19,7 @@ public class userAuthService {
     }
     public String registerUser(UserDto userDto){
         // Implement validation or other business logic if needed
-        userRepository.save(User.builder().id(userDto.getID()).userName(userDto.getUsername()).password(userDto.getPassword()).gender(userDto.getGender()).number(userDto.getNumber()).build());
+        userRepository.save(userDto.toEntity());
         return "Success";
     }
 }

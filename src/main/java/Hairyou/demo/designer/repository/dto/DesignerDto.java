@@ -1,5 +1,7 @@
 package Hairyou.demo.designer.repository.dto;
 
+import Hairyou.demo.designer.repository.entity.Designer;
+import Hairyou.demo.user.repository.entity.User;
 import jakarta.persistence.Entity;
 import lombok.Data;
 import lombok.Getter;
@@ -17,4 +19,14 @@ public class DesignerDto {
     private String nickname;
     private String career;
     private String manager;
+    public Designer toEntity(){
+        return Designer.builder()
+                .id(ID)
+                .password(password)
+                .designerName(designerName)
+                .nickname(nickname)
+                .career(career)
+                .manager(manager)
+                .build();
+    }
 }
