@@ -1,5 +1,6 @@
 package Hairyou.demo.user.controller;
 
+import Hairyou.demo.controllerAdvice.RegistrationFailedException;
 import Hairyou.demo.user.repository.dto.UserDto;
 import Hairyou.demo.user.repository.entity.User;
 import Hairyou.demo.user.service.userAuthService;
@@ -22,10 +23,10 @@ public class UserAuthController {
         if(userAuthService.registerUser(userDto).equals("Success")){
             return new ResponseEntity(HttpStatus.CREATED);
         }
-        return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        throw new RegistrationFailedException("Failed to register user");
     }
     @PostMapping("/login")
-    public ResponseEntity<String> user_login(@RequestParam String id , @RequestParam String password){
+    public ResponseEntity<String> user_login(@RequestParam String id , @RequestParam String password) throws Exception{
         Optional<User> user=userAuthService.login_user(id, password);
         return user.map(value ->
                         ResponseEntity.ok("Login successful for user: " + value.getUserName()))

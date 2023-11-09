@@ -3,6 +3,7 @@ package Hairyou.demo.designer.service;
 import Hairyou.demo.designer.repository.dto.DesignerDto;
 import Hairyou.demo.designer.repository.entity.Designer;
 import Hairyou.demo.designer.repository.entity.DesignerRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Optional;
 public class DesignerAuthService {
     private final DesignerRepository designerRepository;
     public Optional<Designer> login_designer(String id, String password) {
-        Optional<Designer> designer = designerRepository.findByid(id);
+        Optional<Designer> designer = Optional.ofNullable(designerRepository.findByid(id).orElseThrow(EntityNotFoundException::new));
         if (designer.isPresent() && designer.get().getPassword().equals(password)) {
             return designer;
         }

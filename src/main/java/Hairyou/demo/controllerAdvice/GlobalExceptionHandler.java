@@ -17,4 +17,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException e) {
         return new ResponseEntity<>(" login fail", HttpStatus.UNAUTHORIZED);
     }
+    @ExceptionHandler(RegistrationFailedException.class)
+    public ResponseEntity<String> handleRegistrationFailedException(RegistrationFailedException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+
 }
