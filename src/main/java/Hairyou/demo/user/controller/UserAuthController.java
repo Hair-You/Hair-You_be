@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth/user")
@@ -15,19 +18,18 @@ public class UserAuthController {
     private final userAuthService userAuthService;
 
     @PostMapping("/sign-up")
-    public ResponseEntity registerUser(@RequestBody UserDto userDto) {
+    public ResponseEntity registerUser(@RequestBody UserDto userDto) throws Exception {
         if(userAuthService.registerUser(userDto).equals("Success")){
             return new ResponseEntity(HttpStatus.CREATED);
-        };
+        }
         return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
     @PostMapping("/login")
     public ResponseEntity<String> user_login(@RequestParam String id , @RequestParam String password){
-        User user=userAuthService.login_user(id, password);
-        if (user != null) {
-            return ResponseEntity.ok("Login successful for user: " + user.getUserName());
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
-        }
+        Optional<User> user=userAuthService.login_user(id, password);
+        return user.map(value ->
+                        ResponseEntity.ok("Login successful for user: " + value.getUserName()))
+                .orElseThrow(() -> new NoSuchElementException("User not found"));
+
     }
 }

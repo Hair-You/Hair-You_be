@@ -6,16 +6,18 @@ import Hairyou.demo.designer.repository.entity.DesignerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class DesignerAuthService {
     private final DesignerRepository designerRepository;
-    public Designer login_designer(String id, String password) {
-        Designer designer = designerRepository.findByid(id);
-        if (designer != null && designer.getPassword().equals(password)) {
+    public Optional<Designer> login_designer(String id, String password) {
+        Optional<Designer> designer = designerRepository.findByid(id);
+        if (designer.isPresent() && designer.get().getPassword().equals(password)) {
             return designer;
         }
-        return null;
+        return Optional.empty();
     }
     public String registerDesigner(DesignerDto designer) {
         // Implement validation or other business logic if needed

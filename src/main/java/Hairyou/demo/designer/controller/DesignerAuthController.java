@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth/designer")
@@ -22,11 +25,9 @@ public class DesignerAuthController {
     }
     @PostMapping("/login")
     public ResponseEntity<String> designer_login(@RequestParam String id , @RequestParam String password){
-        Designer designer=designerAuthService.login_designer(id, password);
-        if (designer != null) {
-            return ResponseEntity.ok("Login successful for user: " + designer.getDesignerName());
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
-        }
+        Optional<Designer> designer=designerAuthService.login_designer(id, password);
+        return designer.map(value ->
+                        ResponseEntity.ok("Login successful for user: " + value.getDesignerName()))
+                .orElseThrow(() -> new NoSuchElementException("Designer not found"));
     }
 }
