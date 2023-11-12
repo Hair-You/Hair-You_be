@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class userAuthService {
     private final UserRepository userRepository;
-    public Optional<User> login_user(String id, String password) {
+    public Optional<User> loginUser(String id, String password) {
         Optional<User> user = Optional.ofNullable(userRepository.findByid(id).orElseThrow(EntityNotFoundException::new));
         if (user.isPresent() && user.get().getPassword().equals(password)) {
             return user;

@@ -2,6 +2,7 @@ package Hairyou.demo.user.controller;
 
 import Hairyou.demo.controllerAdvice.RegistrationFailedException;
 import Hairyou.demo.user.repository.dto.UserDto;
+import Hairyou.demo.user.repository.dto.UserLoginDto;
 import Hairyou.demo.user.repository.entity.User;
 import Hairyou.demo.user.service.userAuthService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +27,8 @@ public class UserAuthController {
         throw new RegistrationFailedException("Failed to register user");
     }
     @PostMapping("/login")
-    public ResponseEntity<String> user_login(@RequestParam String id , @RequestParam String password) throws Exception{
-        Optional<User> user=userAuthService.login_user(id, password);
+    public ResponseEntity<String> userLogin(@RequestBody UserLoginDto userLoginDto) throws Exception{
+        Optional<User> user=userAuthService.loginUser(userLoginDto.getId(), userLoginDto.getPassword());
         return user.map(value ->
                         ResponseEntity.ok("Login successful for user: " + value.getUserName()))
                 .orElseThrow(() -> new NoSuchElementException("User not found"));

@@ -2,6 +2,7 @@ package Hairyou.demo.designer.controller;
 
 import Hairyou.demo.controllerAdvice.RegistrationFailedException;
 import Hairyou.demo.designer.repository.dto.DesignerDto;
+import Hairyou.demo.designer.repository.dto.DesignerLoginDto;
 import Hairyou.demo.designer.repository.entity.Designer;
 import Hairyou.demo.designer.service.DesignerAuthService;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ public class DesignerAuthController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
     @PostMapping("/login")
-    public ResponseEntity<String> designer_login(@RequestParam String id , @RequestParam String password) throws Exception{
-        Optional<Designer> designer=designerAuthService.login_designer(id, password);
+    public ResponseEntity<String> designerLogin(@RequestBody DesignerLoginDto designerLogin) throws Exception{
+        Optional<Designer> designer=designerAuthService.loginDesigner(designerLogin.getId(), designerLogin.getPassword());
         return designer.map(value ->
                         ResponseEntity.ok("Login successful for user: " + value.getDesignerName()))
                 .orElseThrow(() -> new NoSuchElementException("Designer not found"));

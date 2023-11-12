@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DesignerAuthService {
     private final DesignerRepository designerRepository;
-    public Optional<Designer> login_designer(String id, String password) {
+    public Optional<Designer> loginDesigner(String id, String password) {
         Optional<Designer> designer = Optional.ofNullable(designerRepository.findByid(id).orElseThrow(EntityNotFoundException::new));
         if (designer.isPresent() && designer.get().getPassword().equals(password)) {
             return designer;
